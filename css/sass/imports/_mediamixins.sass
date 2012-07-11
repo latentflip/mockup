@@ -1,0 +1,45 @@
+// Media Queries
+
+
+//mobile-first
+//$smartphone: "only screen and (min-width : 20em)"
+//$tablet: "only screen and (min-width : 48em) and (max-width : 64em)"
+//$netbook: "only screen and (min-width : 64em)"
+//$desktop: "only screen and (min-width : 100em)"
+
+//descktop-first
+$smartphone: "only screen and (max-width : 20em)"
+$tablet: "only screen and (max-width : 48em)"
+$netbook: "only screen and (max-width : 64em)"
+$desktop: "only screen and (max-width : 100em)"
+
+
+=media($media)
+	@if $media == smartphone
+		@media #{$smartphone}
+			@content
+	@else if $media == tablet
+		@media #{$tablet}
+			@content
+	@else if $media == netbook
+		@media #{$netbook}
+			@content
+	@else if $media == desktop
+		@media #{$desktop}
+			@content
+
+// makes sense for desktop-first
+=fullwidth-for($media)
+	@if $media == smartphone
+		@media #{$smartphone}
+			width: 100%
+	@else if $media == tablet
+		@media #{$tablet}
+			width: 100%
+	@else if $media == netbook
+		@media #{$netbook}
+			width: 100%
+	@else if $media == desktop
+		@media #{$desktop}
+			width: 100%
+

@@ -1,0 +1,581 @@
+@import imports/ilckmixins
+@import imports/mixins
+@import imports/variables
+@import imports/grid960
+@import imports/eleven40
+@import imports/reset
+@import imports/fonts
+//@import imports/icon
+
+@import "../img/sprite/*.png"
+//+all-sprite-sprites
+//+sprite-BMI
+// LOCAL VARIABLES (for quick reference)
+
+$text: black
+$link: #888
+$link-hover: #444
+$link-active: darkgray
+
+$jwblue: #8EC5EB
+$lightgray: #ebe9e8
+
+/* WORDPRESS STYLES =======================================================
+.alert
+	background: red
+	color: white
+.aligncenter
+	display: block
+	margin: 0 auto
+.alignleft 
+	float: left
+	margin: 0 20px 10px 0
+.alignright 
+	float: right
+	margin: 0 0 10px 20px
+.offscreen
+	+screenreader
+.wp-caption
+	border: 1px solid #666
+	text-align: center
+	background: #ccc
+	padding: 10px
+	margin: 10px
+br.clear 
+	clear: both
+	display: block
+	height: 1px
+	margin: -1px 0 0 0
+
+/* TEXT STYLES ============================================================
+body
+	background-color: #EDECE9
+	font-family: Arial, sans-serif
+	font-weight: 500
+	font-size: 12.5px
+	color: $text
+h1
+	font-size: 1.7em
+	font-weight: bold
+p
+	font-size: 1.2em
+	line-height: 130%
+	margin-bottom: .6em	
+a
+	text-decoration: none
+	color: $link
+	&:hover
+		text-decoration: none
+		color: $link-hover
+	&:active
+		color: $link-active
+
+/* SCAFFOLDING ============================================================
+#full-wrap
+	+eleven40-row
+	padding: 0 .8em
+	margin: 0 auto
+	background-color: white
+	+box-shadow(0px 0px 5px rgb(199, 198, 197))
+	min-height: 100%
+	padding-bottom: 60px
+	@media screen and (max-width: 960px)
+		padding-left: 0
+		padding-right: 0
+#wrap
+	+clearfix
+	+eleven40-container
+header#banner
+	+clearfix
+	+eleven40-container
+	margin-bottom: 20px
+	.border
+		width: 100%
+		height: 1px
+		border-bottom: 3px #ccc solid
+		clear: both
+
+#header-left, #header-right
+	min-height: 118px
+	@media screen and (max-width: 800px)
+		min-height: 0
+
+#header-right
+	+eleven40-column(4, true)
+	float: right
+
+#header-left
+	+eleven40-column(8)
+
+#header-left, #header-right
+	@media screen and (max-width: 800px)
+		+eleven40-row
+
+footer#page-footer
+	+eleven40-row
+	height: 50px
+	margin-top: -53px
+	.container
+		border-top: 3px solid $lightgray
+		margin: 0 20px
+		padding: 5px 0
+		color: #ccc
+#main
+	+eleven40-column(8)
+	margin-bottom: 30px
+	@media screen and (max-width: 800px)
+		+eleven40-row
+#sidebar
+	+eleven40-column(4, true)
+
+/* NAVIGATION ============================================================
+
+#mainnav
+	+inline-list
+	float: right
+	text-align: left
+	text-align: center
+	margin-right: -(+eleven40-span(1.03))
+	li
+		padding: .4em 0 .4em 1.4em
+		text-transform: uppercase
+		+transition(background-color .2s)
+		&:hover
+			a
+				color: $link-hover
+		a
+			font-family: Arial, sans-serif
+			font-weight: bold
+			color: $link
+			+linktransition
+			&:hover
+				color: $link-hover
+	@media screen and (max-width: 800px)
+		float: left
+	@media screen and (max-width: 800px)
+		margin: 0 auto
+		li
+			padding: .4em .7em
+
+
+/* HEADER ============================================================
+#logo
+	margin-top: 1em
+	height: 86px
+	width: 245px
+	background: url(../img/JW_logo_03.png) 0 center no-repeat
+	display: table
+	#site-title
+		text-transform: uppercase
+		padding-left: 92px
+		display: table-cell
+		vertical-align: middle
+		a
+			color: $jwblue
+			font-size: 1.4em
+	@media screen and (max-width: 800px)
+		padding: 0
+		margin: 1em auto
+#contactbox
+	float: right
+	text-align: center
+	background-color: $jwblue
+	color: white
+	font-size: 1.1em
+	margin: 0 0 58px 0
+	padding: .4em .8em .62em .8em
+	a
+		color: white
+	.email
+		background: url(../img/icons/email.png) center center no-repeat
+		width: 28px
+		height: 20px
+		display: inline-block
+		margin: 0 0 -4px 1.1em
+	.phone
+		background: url(../img/icons/phone.png) center center no-repeat
+		width: 26px
+		height: 26px
+		display: inline-block
+		margin: 0 0.8em -8px 0
+	@media screen and (max-width: 800px)
+		float: right
+		margin-bottom: 0
+	@media screen and (max-width: 800px)
+		margin: 0 auto
+		float: none
+
+#search
+	color: gray
+	float: right
+	label
+		font-weight: bold
+		padding-right: .5em
+	input[type="text"]
+		padding: 1px
+		font-size: .95em
+		background-color: white
+		border: 1px #ccc solid
+		width: 120px
+	input[type="submit"]
+		background-color: #ccc
+		font-weight: bold
+		color: white
+		text-transform: uppercase
+		padding: 3px 5px
+		border: none
+		font-size: 11px
+	@media screen and (max-width: 800px)
+		float: right
+		clear: right
+		margin-top: 58px
+		label
+			display: none
+	@media screen and (max-width: 800px)
+		display: none
+/* HOME  ============================================================
+#feature_container
+	+clearfix
+	margin: -23px 0 20px 0px
+	#image_reel
+		+eleven40-column(8)
+		height: 345px
+		width: 623px
+		margin: 0 2px 0 0
+		background-color: black
+		img
+			width: 623px
+			height: 345px
+			top: 0
+	#image_reel li .text_container
+		width: 480px
+		position: absolute
+		top: 200px
+		background-color: rgba(46,23,17, 0.9)
+		padding-left: 20px
+		p
+			margin-top: 0.6em
+			font-weight: normal
+
+	#image_reel li p
+		font-size: 2em
+		font-family: helvetica, Arial, sans-serif
+		text-transform: uppercase
+		color: white
+	// @media screen and (max-width: 960px)
+	// 	+eleven40-container
+		// .image_reel
+		// 	+eleven40-container
+		// 	img
+		// 		width: 100%
+
+	#title_reel
+		width: 295px
+		height: 345px
+		float: left
+		overflow: hidden
+		li
+			height: 55px
+			width: 100%
+			margin: 0 0 3px 0
+			font-size: 18px
+			padding: 0
+			border-right: 1px #98D1E0 solid
+			background: url(../img/JW_slider_gradient.png) repeat-x center lightblue
+			+transition(background-color .3s)
+			display: table
+			&:last-child
+				margin-bottom: 0
+			a
+				color: white
+				font-family: 'ArvoRegular', Arial, sans-serif
+				letter-spacing: 1px
+				display: table-cell
+				vertical-align: middle
+				padding-left: 20px
+				text-transform: capitalize
+		.active
+			background-color: #494123 !important
+			border-right: none
+		// @media screen and (max-width: 960px)
+		// 	position: relative
+		// 	left: -500px
+	@media screen and (max-width: 960px)
+		display: none
+
+#home-content
+	+eleven40-column(8)
+	p
+		line-height: 125%
+		&:first-child
+			font-size: 2em
+			font-weight: bold
+	@media screen and (max-width: 800px)
+		+eleven40-row
+
+#home-image
+	+eleven40-column(4, true)
+	img
+		float: right
+		width: 100%
+		height: auto
+	@media screen and (max-width: 800px)
+		+eleven40-row
+		text-align: center
+		margin-top: 1em
+		img
+			float: none
+			width: 294px
+			height: auto
+/* PAGES  ============================================================
+#page-title
+	text-transform: uppercase
+	font-weight: normal
+	font-size: 2em
+	padding: 0 0 .8em 0
+	margin: 0 0 10px 0
+	border-bottom: 1px solid #ddd
+	.title-breadcrumb
+		color: #ddd
+	@media screen and (max-width: 800px)
+		text-align: center
+#main
+	clear: both
+	min-height:	200px
+	h1
+		text-transform: uppercase
+		margin-bottom: 1em
+		width: 100%
+
+	article
+		margin-top: 15px
+		& > p:first-child
+			font-size: 1.35em
+			font-weight: bold
+			font-family: Arial, sans-serif
+	.secondary_image
+		margin-right: 3px
+	#project-list, #service-list, #product-list
+		margin-top: 3em
+		li
+			clear: both
+			+clearfix
+			margin-bottom: 2em
+			h2 
+				margin-bottom: 0.8em
+				a
+					color: #111
+					font-size: 1.25em
+					font-weight: bold
+		.read-more
+			padding: .6em .6em .6em 2.1em
+			+border-radius(2px)
+			+box-shadow(1px 1px 3px #999)
+			font-size: 14px
+			color: white
+			background: $jwblue url(../img/icons/button_triangle.png) no-repeat 10% 50%
+			display: block
+			margin-top: 0
+			float: right
+			&:hover
+				font-weight: bold
+
+#main.projects
+	+eleven40-row
+#project-list
+	+eleven40-row
+	.project-image
+		display: block
+		+eleven40-column(4)
+	.project-text
+		+eleven40-column(8, true)
+		p
+			min-height: 85px
+		.read-more
+			margin-top: 5px
+			float: left
+
+/* CONTACT ============================================================
+#contact_main
+	+eleven40-row
+	margin-bottom: 30px
+#map_sidebar
+	+eleven40-column(4)
+	background-color: $jwblue
+	color: white
+	min-height: 500px
+	a
+		color: white
+#map
+	width: 100%
+	height: 260px
+#contact_page_info
+	padding: 20px
+	div
+		padding: 0 0 0 60px
+		p
+			padding: 10px 0
+	.home_address
+		background: url(../img/icons/home.png) 0% 48% no-repeat
+	.email
+		background: url(../img/icons/email.png) 0% 48% no-repeat
+	.phone_no
+		background: url(../img/icons/phone.png) 0% 48% no-repeat
+#contact_page_links
+	margin: 70px auto 0 auto
+	div
+		width: 33%
+		height: 50px
+	a
+		display: block
+		float: left
+		margin-right: 7px
+		margin-bottom: 30px
+	.linked-in_link
+		+sprite-sprite(linkedin, true)
+	.facebook_link
+		+sprite-sprite(facebook, true)
+	.bni_link
+		+sprite-sprite(BNI, true)
+#contact_page_form
+	+eleven40-column(7.9, true)
+	background-color: #F7F7F7
+	color: #8b8d8e !important
+	border: solid 1px #d1ceca
+	padding: 20px 0
+	min-height: 511px
+	.gform_heading
+		width: 100%
+		h3
+			display: none
+	.gform_description
+		display: block
+		width: 88%
+		padding: 0 6%
+		padding-bottom: 20px
+		margin: 0
+		font-size: 1.6em
+		color: #8b8d8e
+		font-weight: bold
+
+	.gfield
+		+clearfix
+		clear: both
+		padding-bottom: 1.2em
+	input[type="text"], textarea
+		border: solid 1px #d1ceca
+		background-color: #FFFFFF
+		+border-radius(1px)
+		+box-shadow(#ffffff 0px 0px)
+		width: 100%
+		padding: .4em .5em
+		font-size: 1.2em
+		margin-top: 2px
+	.ginput_container
+		width: 70%
+		margin-right: 10%
+		float: left
+	label
+		width: 20%
+		float: left
+		text-align: center
+		font-size: 1.2em
+	.gfield_checkbox
+		li
+			width: auto
+			margin: .3em 1.5em 0 0
+			float: left
+		label
+			margin-left: 5px
+			width: auto
+			font-size: 1em
+	input[type="submit"]
+		border: solid 1px #80b6de
+		+box-shadow(1px 1px 3px #ccc)
+		+border-radius(2px)
+		font-size: 1.1em
+		font-weight: normal
+		padding: .6em .6em .6em 2.4em
+		color: white !important
+		background: $jwblue url(../img/icons/arrow.png) 15% center no-repeat
+		float: right
+		margin-right: -5px
+		&:hover
+			font-weight: bold
+	.gform_footer
+		padding: .4em .5em
+		width: 70%
+		margin-left: 20%
+		margin-top: 0em
+		padding-bottom: 2em
+
+/* SIDEBAR ============================================================
+#sidebar
+	#recent_project_header
+		font-size: 1.6em
+		font-family: 'ArvoBold'
+		font-weight: normal
+		padding: 0 0 5px 0
+	ul
+		border-bottom: 1px solid #aaa
+		border-top: 1px solid #aaa
+	@media screen and (max-width: 800px)
+		display: none
+#recent_projects
+	.rp_item
+		background-color: rgba(223,223,223, 0.8)
+		margin: 2em 0
+		a
+			padding: 0
+			margin: 0
+		img
+			margin: 0
+			width: 100%
+		.rp_title
+			background-color: #F0EBE7
+			margin: 0
+			p
+				margin: 0
+				font-size: 1em
+				padding: 2px 14px 4px 14px
+				font-weight: bold
+				color: #5A5A5A
+		&:hover
+			.rp_title
+				background-color: #4C412D
+				p a
+					color: white
+		&:first-child
+			margin-top: 7px
+		&:last-child
+			margin-bottom: 7px
+
+
+
+
+
+
+
+/* FOOTER ============================================================
+footer#page-footer
+	span
+		font-weight: normal
+		font-size: .9em
+		padding-top: .6em
+	p, a
+		color: #ccc
+	@media screen and (max-width: 800px)
+		text-align: center
+#footer_links
+	float: right
+	a
+		display: block
+		float: left
+		margin-left: 3px
+.bni_link
+	+sprite-sprite(BNI_footer,true)
+.linked-in_link
+	+sprite-sprite(linkedin_footer, true)
+.facebook_link
+	+sprite-sprite(facebook_footer_grey, true)
+/* END ====================================================================

@@ -1,0 +1,194 @@
+//<all> or <top-right, top-left, bottom-right, bottom-left>
+=border-radius($radius)
+  border-radius: #{$radius}
+  -moz-border-radius: #{$radius}
+  -webkit-border-radius: #{$radius}
+
+//<left top spread color>
+=box-shadow($args)
+  -moz-box-shadow: #{$args}
+  -webkit-box-shadow: #{$args}
+  box-shadow: #{$args}
+
+//<clockwise angle>
+=rotate($args)
+  -moz-transform: rotate(#{$args})
+  -o-transform: rotate(#{$args})
+  -webkit-transform: rotate(#{$args})
+
+//<left top spread color>
+=text-shadow($args)
+  -moz-text-shadow: #{$args}
+  -webkit-text-shadow: #{$args}
+  text-shadow: #{$args}
+
+=box-gradient($from, $to)
+  background-image: -moz-linear-gradient(top, #{$from}, #{$to})
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #{$from}), color-stop(1, #{$to}))
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')"
+
+=arrow
+  width: 0
+  height: 0
+  font-size: 0px
+  line-height: 0px
+
+=bubble-up($size, $color, $left_pos, $right_pos)
+  .arrow
+    +arrow
+    border-left: $size solid transparent
+    border-right: $size solid transparent
+    border-bottom: $size solid $color
+    margin: 0 $right_pos 0 $left_pos
+  .inner
+    padding-top: $size
+    background-color: $color
+
+=circle($diameter, $padding)
+  +border-radius($diameter+$padding)
+  width: $diameter
+  height: $diameter
+  padding: $padding
+  line-height: $diameter
+
+=inline-ie7
+  *display: inline
+  zoom: 1
+  _height: 20px
+
+=opacity($amount)
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$amount*100})"
+
+  /* IE 5-7 */
+  filter: alpha(opacity=#{$amount*100})
+
+  /* Netscape */
+  -moz-opacity: $amount
+
+  /* Safari 1.x */
+  -khtml-opacity: $amount
+
+  /* Good browsers */
+  opacity: $amount
+
+=clearfix
+  &:before
+    content: '\0020'
+    display: block
+    overflow: hidden
+    visibility: hidden
+    width: 0
+    height: 0
+  &:after
+    content: '\0020'
+    display: block
+    overflow: hidden
+    visibility: hidden
+    width: 0
+    height: 0
+    clear: both
+  zoom: 1
+
+
+//my mixins
+
+=inline-block
+  display: inline-block
+  zoom: 1
+  *display: inline
+  _height: 20px
+
+=inline-list
+  list-style-type: none
+  margin: 0
+  margin-left: 0
+  li
+    +inline-block
+
+
+=screenreader
+  position: absolute
+  left: -10000px
+  top: auto
+  width: 1px
+  height: 1px
+  overflow: hidden
+
+
+=rounded-top($round-size)
+  +border-radius($round-size $round-size 0px 0px)
+
+
+=rounded-bottom($round-size)
+  +border-radius(0px 0px $round-size $round-size)
+
+=form($width)
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s
+  -moz-transition: border linear 0.2s, box-shadow linear 0.2s
+  transition: border linear 0.2s, box-shadow linear 0.2s
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1)
+  display: inline-block
+  width: ($width)
+  height: 110%
+  color: #808080
+  border: 1px solid #ccc
+  -webkit-border-radius: 3px
+  -moz-border-radius: 3px
+  border-radius: 3px
+
+=form-focus
+  outline: none
+  border-color: rgba(82, 168, 236, 0.8)
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6)
+  -moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6)
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6)
+
+=btn
+  background-color: #3E8BD8
+  +box-gradient (#3E8BD8, #1070CF)
+  +inline-block
+  font-size: 165%
+  color: #fff
+  text-decoration: none
+  font-weight: bold
+  -moz-border-bottom-colors: none
+  -moz-border-image: none
+  -moz-border-left-colors: none
+  -moz-border-right-colors: none
+  -moz-border-top-colors: none
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
+  border-radius: 4px 4px 4px 4px
+  border-style: solid
+  border-width: 1px
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05)
+  cursor: pointer
+  text-shadow: 0 1px 1px rgba(116, 116, 116, 0.75)
+
+=triple-horizontal-gradient($from, $then, $to)
+  background-color: transparentize($from, .8)
+  background-image: -moz-linear-gradient(0% 100% 0deg, #{$from}, #{$then}, #{$to} 100%)
+  background-image: -webkit-gradient(linear, 100% 0%, 0% 0%, from(#{$from}), to(#{$to}), color-stop(.5,#{$then}))
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')"
+
+=triple-gradient($from, $then, $to)
+  background-image: -moz-linear-gradient(0% 100% 90deg, #{$from}, #{$then}, #{$to} 100%)
+  background-image: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#{$from}), to(#{$to}), color-stop(.5,#{$then}))
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}')"
+
+=transition($value)
+  -moz-transition: $value
+  -o-transition: $value
+  -webkit-transition: $value
+  transition: $value
+
+=linktransition
+  -moz-transition: color 0.25s
+  -o-transition: color 0.25s
+  -webkit-transition: color 0.25s
+  transition: color 0.25s
