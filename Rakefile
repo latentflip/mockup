@@ -9,7 +9,7 @@ def write_output( filename, result )
 end
 
 def partial( name )
-  filename = "source/partials/#{name}.partial"
+  filename = "source/partials/#{name}"
 
   if File.exists? filename
     File.open( filename, 'rb' ).read.chomp
